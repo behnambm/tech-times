@@ -1,0 +1,55 @@
+body{
+    direction: rtl;
+    text-align: right;
+}
+a, p {
+  font-family: Vazir;
+}
+
+.navbar-brand {
+    margin-right: 0;
+}
+
+.navbar-nav {
+    margin-right: 30px;
+}
+
+.my-nav-item {
+    color: #FFF;
+}
+
+.my-nav-item:hover{
+    background-color: #FFFFFF3D;;
+}
+.my-nav-item a {
+    font-size: 0.9rem !important;
+}
+
+.post-preview > a > .post-subtitle {
+    line-break: anywhere;
+    font-size: 1rem;
+}
+
+.post-preview > a > .post-title {
+    font-size: 1.7rem;
+    font-weight: 500;
+}
+
+.post-preview > .post-meta {
+    font-size: 0.8rem;
+    margin-bottom: 0;
+}
+
+.fvazir {
+    font-family: Vazir !important;
+}
+
+.page-item {
+    margin: 0 2px;
+    padding: 10px;
+    padding-left: 12px;
+}
+
+.page-item-current {
+    background-color: #646464;
+}

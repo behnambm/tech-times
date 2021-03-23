@@ -1,5 +1,10 @@
 from django.shortcuts import render
+from django.views.generic.list import ListView
+
+from .models import Article
 
 
-def test(request):
-    return render(request, 'blog/index.html')
+class ArticleListView(ListView):
+    model = Article
+    paginate_by = 2
+
