@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 
 from account.models import User
+from utils import convert_to_jalali
 
 
 class ArticleManager(models.Manager):
@@ -29,6 +30,10 @@ class Article(models.Model):
     last_modified = models.DateTimeField(auto_now=True)
     publish = models.DateTimeField(default=timezone.now)
     status = models.CharField(choices=CHOICES, max_length=100)
+
+    def jpublish(self):
+        """This will take datetime and return in jalali format"""
+        return convert_to_jalali(self.publish)
 
     def __str__(self):
         return self.title
