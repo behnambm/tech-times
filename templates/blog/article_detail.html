@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% block tabtitle %}{% block title %}
+    {{ object.title }}
+{% endblock %}{% endblock %}
+
+{% block subtitle %}
+    {{ object.jpublish }}
+{% endblock %}
+
+{% block content %}
+    {{ object.content|linebreaks }}
+    <hr>
+    <h6>توسط:
+        <a href="{% url 'blog:author' object.author.username %}">
+        {% if object.author.get_full_name %}
+            {{ object.author.get_full_name }}
+        {% else %}
+            {{ object.author.username }}
+        {% endif %}
+        </a>
+    </h6>
+{% endblock %}

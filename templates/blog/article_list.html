@@ -8,7 +8,7 @@
 {% block content %}
     {% for article in object_list %}
     <div class="post-preview">
-        <a href="post.html">
+        <a href="{% url 'blog:detail' article.slug %}">
             <h2 class="post-title">
                 {{ article.title }}
             </h2>
