@@ -131,3 +131,5 @@ AUTH_USER_MODEL = 'account.User'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
+
+PAGINATE_COUNT = 3
