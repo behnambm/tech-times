@@ -5,6 +5,6 @@ from .models import Article
 
 
 class ArticleListView(ListView):
-    model = Article
+    queryset = Article.objects.published()
     paginate_by = settings.PAGINATE_COUNT
 
