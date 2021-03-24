@@ -40,8 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+
     'account.apps.AccountConfig',
     'blog.apps.BlogConfig',
+
+    'utils',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +136,8 @@ MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
 
 PAGINATE_COUNT = 3
+
+# prepare to deploy to Heroku
+if config('HEROKU_DEPLOY', cast=bool, default=False):
+    import django_heroku
+    django_heroku.settings(locals(), test_runner=False)
