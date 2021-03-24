@@ -5,7 +5,8 @@ from account.models import User
 
 
 class BaseTestCase(TestCase):
-    def setUp(self):
+    @classmethod
+    def setUpTestData(cls):
         """Test data for User model"""
         behnam = User.objects.create(
             username='behnam',
