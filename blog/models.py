@@ -4,7 +4,14 @@ from django.utils import timezone
 from account.models import User
 
 
+class ArticleManager(models.Manager):
+    def published(self):
+        return self.filter(status='published')
+
+
 class Article(models.Model):
+    objects = ArticleManager()
+
     class Meta:
         ordering = ('-publish', )
     CHOICES = (
