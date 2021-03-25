@@ -7,16 +7,16 @@
 
 {% block content %}
     {% for article in object_list %}
-    <div class="post-preview">
-        <a href="{% url 'blog:detail' article.slug %}">
-            <h2 class="post-title">
-                {{ article.title }}
-            </h2>
-            <h4 class="post-subtitle">
-                {{ article.content|truncatewords:35 }}
-            </h4>
-        </a>
-        <p class="post-meta" style="text-align: left">
+        <div class="post-preview">
+            <a href="{% url 'blog:detail' article.slug %}">
+                <h2 class="post-title">
+                    {{ article.title }}
+                </h2>
+                <h4 class="post-subtitle">
+                    {{ article.content|truncatewords:35 }}
+                </h4>
+            </a>
+            <p class="post-meta" style="text-align: left">
             <span style="float: right;">
                 <i class="fa fa-user"></i> &nbsp;
                 توسط
@@ -28,13 +28,13 @@
                     {% endif %}
                 </a>
             </span>
-            <span >
+                <span>
                 <i class="fa fa-clock"></i> &nbsp;
                 {{ article.publish|naturaltime }}
             </span>
-        </p>
-    </div>
-    <hr>
+            </p>
+        </div>
+        <hr>
     {% empty %}
         <h2>مطلبی یافت نشد.</h2>
     {% endfor %}
@@ -42,15 +42,15 @@
 
 
 {% block next-page-link %}
-<a class="btn btn-primary float-right fvazir page-item" href="{% url 'blog:home' page_obj.next_page_number%}">
-  <i class="fa fa-left-arrow"></i>
-    صفحه بعد
-</a>
+    <a class="btn btn-primary float-right fvazir page-item" href="{% url 'blog:home' page_obj.next_page_number %}">
+        <i class="fa fa-left-arrow"></i>
+        صفحه بعد
+    </a>
 {% endblock %}
 
 {% block previous-page-link %}
-<a class="btn btn-primary float-right fvazir page-item" href="{% url 'blog:home' page_obj.previous_page_number%}">
-  <i class="fa fa-left-arrow"></i>
-    صفحه قبل
-</a>
+    <a class="btn btn-primary float-right fvazir page-item" href="{% url 'blog:home' page_obj.previous_page_number %}">
+        <i class="fa fa-left-arrow"></i>
+        صفحه قبل
+    </a>
 {% endblock %}

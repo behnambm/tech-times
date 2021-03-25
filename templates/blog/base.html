@@ -3,68 +3,69 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  <title>{% block tabtitle %}{% endblock %}</title>
+    <title>{% block tabtitle %}{% endblock %}</title>
 
-  <!-- Bootstrap core CSS -->
-  <link href="{% static 'blog/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'blog/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
-  <!-- Custom fonts for this template -->
-  <link href="{% static 'blog/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <!-- Custom fonts for this template -->
+    <link href="{% static 'blog/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
 
-  <!-- Custom styles for this template -->
-  <link href="{% static 'blog/css/clean-blog.css' %}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'blog/css/clean-blog.css' %}" rel="stylesheet">
 
-  <link href="{% static 'blog/css/rtl.css' %}" rel="stylesheet">
+    <link href="{% static 'blog/css/rtl.css' %}" rel="stylesheet">
 
 </head>
 
 <body>
-    {% include 'blog/partials/navigation.html' %}
+{% include 'blog/partials/navigation.html' %}
 
-  <!-- Page Header -->
-  <header class="masthead" style="background-image: url('{% static 'blog/img/home-bg.jpg' %}')">
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('{% static 'blog/img/home-bg.jpg' %}')">
     <div class="overlay"></div>
     <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="site-heading">
-            <h1 style="font-size: 3rem;">{% block title %}{% endblock %}</h1>
-            <span class="subheading" style="font-size: 1.1rem;">{% block subtitle %}{% endblock %}</span>
-          </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1 style="font-size: 2.5rem;">{% block title %}{% endblock %}</h1>
+                    <span class="subheading"
+                          style="font-size: 1.1rem; font-family: Vazir">{% block subtitle %}{% endblock %}</span>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </header>
+</header>
 
-  <!-- Main Content -->
-  <div class="container">
+<!-- Main Content -->
+<div class="container">
     <div class="row">
 
-      <div class="col-lg-9 col-md-10">
-          {% block content %}{% endblock %}
+        <div class="col-lg-9 col-md-10" style="font-family: Vazir">
+            {% block content %}{% endblock %}
 
-      <!-- Pager -->
-          <div class="clearfix">
-              <div class="row">
-                  <div class="col-6">
-                      {% if page_obj.has_previous %}
-                          {% block previous-page-link %}{% endblock %}
-                      {% endif %}
-                  </div>
-                  {% if page_obj.has_next %}
-                      <div class="col-6 d-flex justify-content-end">
-                          {% block next-page-link %}{% endblock %}
-                      </div>
-                  {% endif %}
-              </div>
-          </div>
-      </div>
+            <!-- Pager -->
+            <div class="clearfix">
+                <div class="row">
+                    <div class="col-6">
+                        {% if page_obj.has_previous %}
+                            {% block previous-page-link %}{% endblock %}
+                        {% endif %}
+                    </div>
+                    {% if page_obj.has_next %}
+                        <div class="col-6 d-flex justify-content-end">
+                            {% block next-page-link %}{% endblock %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
 
 {% include 'blog/partials/footer.html' %}

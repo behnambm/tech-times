@@ -13,11 +13,11 @@
     <hr>
     <h6>توسط:
         <a href="{% url 'blog:author' object.author.username %}">
-        {% if object.author.get_full_name %}
-            {{ object.author.get_full_name }}
-        {% else %}
-            {{ object.author.username }}
-        {% endif %}
+            {% if object.author.get_full_name %}
+                {{ object.author.get_full_name }}
+            {% else %}
+                {{ object.author.username }}
+            {% endif %}
         </a>
     </h6>
 {% endblock %}
