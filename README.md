@@ -17,7 +17,7 @@ https://tech-times.herokuapp.com/
 #### More to know
 
 - CI/CD: Github Actions / Heroku
-
+- Cloud Storage: Arvan Cloud
 
 <details>
 <summary>Developers only </summary>
