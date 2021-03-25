@@ -29,6 +29,6 @@ jobs:
     - name: Run Tests
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
-
+        CI_STAGE: True
       run: |
         python manage.py test
