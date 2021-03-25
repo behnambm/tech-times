@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.core.files import File
+from django.core.files.storage import FileSystemStorage
 
 from ..models import Article
 from account.models import User
@@ -19,6 +20,9 @@ class BaseTestCase(TestCase):
             first_name='Hugo',
             email='hugoalfredha@gmail.com'
         )
+
+        # to prevent sending data to Arvan Cloud
+        Article.thumbnail.field.storage = FileSystemStorage()
 
         # Test data for Article model
         Article.objects.create(
