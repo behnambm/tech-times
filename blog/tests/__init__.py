@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.core.files import File
 
 from ..models import Article
 from account.models import User
@@ -26,6 +27,7 @@ class BaseTestCase(TestCase):
             slug='article-1',
             status='published',
             author=behnam,
+            thumbnail=File(open('static/blog/img/home-bg.jpg', 'rb')),
         )
         Article.objects.create(
             title='Test Article 2',
@@ -33,6 +35,7 @@ class BaseTestCase(TestCase):
             slug='article-2',
             status='published',
             author=behnam,
+            thumbnail=File(open('static/blog/img/home-bg.jpg', 'rb')),
         )
         Article.objects.create(
             title='Test Article 3',
@@ -40,6 +43,7 @@ class BaseTestCase(TestCase):
             slug='article-3',
             status='draft',
             author=behnam,
+            thumbnail=File(open('static/blog/img/home-bg.jpg', 'rb')),
         )
         Article.objects.create(
             title='Test Article 4',
@@ -47,6 +51,7 @@ class BaseTestCase(TestCase):
             slug='article-4',
             status='draft',
             author=hugo,
+            thumbnail=File(open('static/blog/img/home-bg.jpg', 'rb')),
         )
         Article.objects.create(
             title='Test Article 5',
@@ -54,6 +59,7 @@ class BaseTestCase(TestCase):
             slug='article-5',
             status='published',
             author=behnam,
+            thumbnail=File(open('static/blog/img/home-bg.jpg', 'rb')),
         )
         Article.objects.create(
             title='Test Article 6',
@@ -61,6 +67,7 @@ class BaseTestCase(TestCase):
             slug='article-6',
             status='rejected',
             author=behnam,
+            thumbnail=File(open('static/blog/img/home-bg.jpg', 'rb')),
         )
         Article.objects.create(
             title='Test Article 7',
@@ -68,6 +75,7 @@ class BaseTestCase(TestCase):
             slug='article-7',
             status='published',
             author=behnam,
+            thumbnail=File(open('static/blog/img/home-bg.jpg', 'rb')),
         )
         Article.objects.create(
             title='Test Article 8',
@@ -75,6 +83,7 @@ class BaseTestCase(TestCase):
             slug='article-8',
             status='published',
             author=behnam,
+            thumbnail=File(open('static/blog/img/home-bg.jpg', 'rb')),
         )
         Article.objects.create(
             title='Test Article 9',
@@ -82,6 +91,7 @@ class BaseTestCase(TestCase):
             slug='article-9',
             status='pending',
             author=behnam,
+            thumbnail=File(open('static/blog/img/home-bg.jpg', 'rb')),
         )
         Article.objects.create(
             title='Test Article 10',
@@ -89,6 +99,7 @@ class BaseTestCase(TestCase):
             slug='article-10',
             status='published',
             author=hugo,
+            thumbnail=File(open('static/blog/img/home-bg.jpg', 'rb')),
         )
         Article.objects.create(
             title='Test Article 11',
@@ -96,5 +107,6 @@ class BaseTestCase(TestCase):
             slug='article-11',
             status='draft',
             author=hugo,
+            thumbnail=File(open('static/blog/img/home-bg.jpg', 'rb')),
         )
 
