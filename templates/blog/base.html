@@ -27,7 +27,7 @@
 {% include 'blog/partials/navigation.html' %}
 
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('{% static 'blog/img/home-bg.jpg' %}')">
+<header class="masthead" style="background-image: url('{% block header-img-link %}{% endblock %}')">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">

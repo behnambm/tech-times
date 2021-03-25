@@ -1,9 +1,13 @@
 {% extends 'blog/base.html' %}
 {% load humanize %}
+{% load static%}
+
 
 {% block tabtitle %}وبلاگ تک تایمز {% endblock %}
 
 {% block title %}مقالات اخیر {% endblock %}
+
+{% block header-img-link %}{% static 'blog/img/home-bg.jpg' %}{% endblock %}
 
 {% block content %}
     {% for article in object_list %}

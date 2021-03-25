@@ -8,6 +8,8 @@
     {{ object.jpublish }}
 {% endblock %}
 
+{% block header-img-link %}{{ object.thumbnail.url }}{% endblock %}
+
 {% block content %}
     {{ object.content|linebreaks }}
     <hr>
