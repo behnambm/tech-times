@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
 
     'utils',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -141,3 +142,12 @@ PAGINATE_COUNT = 3
 if config('HEROKU_DEPLOY', cast=bool, default=False):
     import django_heroku
     django_heroku.settings(locals(), test_runner=False)
+
+
+# Arvan cloud bucket storage
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID', cast=str)
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY', cast=str)
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME', cast=str)
+AWS_S3_FILE_OVERWRITE = False
+AWS_S3_ENDPOINT_URL = config('AWS_S3_ENDPOINT_URL', cast=str)
