@@ -18,6 +18,7 @@ https://tech-times.herokuapp.com/
 
 - CI/CD: Github Actions / Heroku
 - Cloud Storage: Arvan Cloud
+- Database Back-end: Heroku-Postgresql
 
 <details>
 <summary>Developers only </summary>
