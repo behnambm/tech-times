@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
     'utils',
     'storages',
+    'django_gravatar',
 ]
 
 MIDDLEWARE = [
