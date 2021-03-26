@@ -66,3 +66,16 @@ a, p {
     padding-top: 10px !important;
     box-shadow: 0 -0.01rem .55rem rgba(0,0,0,.075) !important;
 }
+
+#author-gravatar-img {
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+#author-bio-text {
+    display: block;
+    font-family: Vazir !important;
+    font-size: 0.9rem;
+    margin-top: 20px;
+}

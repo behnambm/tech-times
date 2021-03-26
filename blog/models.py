@@ -21,7 +21,7 @@ class Article(models.Model):
         ('pending', 'در حال بررسی'),
         ('rejected', 'رد شده'),
     )
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='articles')
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
     content = models.TextField()

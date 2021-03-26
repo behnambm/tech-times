@@ -14,5 +14,6 @@ urlpatterns = [
 
     path('article/<slug:slug>/', ArticleDetailView.as_view(), name='detail'),
 
-    path('author/<usernmae>/', AuthorProfileView.as_view(), name='author'),
+    path('author/<username>/', AuthorProfileView.as_view(), name='author'),
+    path('author/<username>/page/<int:page>/', AuthorProfileView.as_view(), name='author'),
 ]

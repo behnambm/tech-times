@@ -1,0 +1,72 @@
+{% extends 'blog/base.html' %}
+{% load static%}
+{% load humanize %}
+{% load custom_filters %}
+{% load gravatar %}
+
+
+
+{% block tabtitle %}{% block title %}
+    {% if author.get_full_name %}
+        {{ author.get_full_name }}
+    {% else %}
+        {{ author.username }}
+    {% endif %}
+{% endblock %}{% endblock %}
+
+
+{% block subtitle %}
+    <br>
+    {{ author.articles.published.count|to_fa_numbers }}
+    مقاله نوشته است.
+{% endblock %}
+
+{% block header-img-link %}{% static 'blog/img/home-bg.jpg' %}{% endblock %}
+
+
+
+{% block content %}
+    {% for article in object_list %}
+        <div class="post-preview shadow-sm p-3 mb-5 bg-white rounded">
+            <a href="{% url 'blog:detail' article.slug %}">
+                <h2 class="post-title">
+                    {{ article.title }}
+                </h2>
+                <h4 class="post-subtitle">
+                    {{ article.content|truncatewords:35 }}
+                </h4>
+            </a>
+            <p class="post-meta" style="text-align: left">
+                <span>
+                <i class="fa fa-clock"></i> &nbsp;
+                {{ article.publish|naturaltime }}
+            </span>
+            </p>
+        </div>
+    {% empty %}
+        <h2>مطلبی یافت نشد.</h2>
+    {% endfor %}
+{% endblock %}
+
+{% block next-page-link %}
+    <a class="btn btn-primary float-right fvazir page-item" href="{% url 'blog:author' author.username page_obj.next_page_number %}">
+        <i class="fa fa-left-arrow"></i>
+        صفحه بعد
+    </a>
+{% endblock %}
+
+{% block previous-page-link %}
+    <a class="btn btn-primary float-right fvazir page-item" href="{% url 'blog:author' author.username page_obj.previous_page_number %}">
+        <i class="fa fa-left-arrow"></i>
+        صفحه قبل
+    </a>
+{% endblock %}
+
+{% block left-sidebar %}
+<div class="col-3 shadow p-3 mb-5 bg-white rounded" style="height: -moz-fit-content">
+    <img src="{% gravatar_url author.email 90 %}" alt="" id="author-gravatar-img">
+    <span id="author-bio-text">
+        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+    </span>
+</div>
+{% endblock %}
