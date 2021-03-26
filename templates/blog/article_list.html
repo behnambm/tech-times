@@ -11,7 +11,7 @@
 
 {% block content %}
     {% for article in object_list %}
-        <div class="post-preview">
+        <div class="post-preview shadow-sm p-3 mb-5 bg-white rounded">
             <a href="{% url 'blog:detail' article.slug %}">
                 <h2 class="post-title">
                     {{ article.title }}
@@ -38,7 +38,6 @@
             </span>
             </p>
         </div>
-        <hr>
     {% empty %}
         <h2>مطلبی یافت نشد.</h2>
     {% endfor %}

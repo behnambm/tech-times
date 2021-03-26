@@ -53,3 +53,16 @@ a, p {
 .page-item-current {
     background-color: #646464;
 }
+
+.author-footer img {
+    border-radius: 50%;
+}
+
+.post-preview > a > .post-title {
+    margin-top: 0;
+}
+
+.post-preview {
+    padding-top: 10px !important;
+    box-shadow: 0 -0.01rem .55rem rgba(0,0,0,.075) !important;
+}
