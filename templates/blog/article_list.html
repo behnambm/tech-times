@@ -24,7 +24,7 @@
             <span style="float: right;">
                 <i class="fa fa-user"></i> &nbsp;
                 توسط
-                <a href="#" style="text-decoration: none;">
+                <a href="{% url 'blog:author' article.author.username %}" style="text-decoration: none;">
                     {% if article.author.get_full_name %}
                         {{ article.author.get_full_name }}
                     {% else %}

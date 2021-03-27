@@ -79,3 +79,7 @@ a, p {
     font-size: 0.9rem;
     margin-top: 20px;
 }
+
+.article-content p {
+    font-size: 1.1rem;
+}
