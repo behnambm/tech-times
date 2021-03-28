@@ -13,7 +13,7 @@
 
 {% block content %}
     <div class="article-content shadow p-3 mb-5 bg-white rounded">
-    {{ object.content|linebreaks }}
+        {{ object.content|linebreaks }}
     </div>
     <div class="author-footer shadow p-3 mb-5 bg-white rounded">
         <div class="row">
@@ -29,7 +29,7 @@
                 </h6>
             </div>
             <div class="col-2 d-flex justify-content-end">
-                <img  src="{% gravatar_url object.author.email 75 %}" alt="{{ object.author.get_full_name }}">
+                <img src="{% gravatar_url object.author.email 75 %}" alt="{{ object.author.get_full_name }}">
             </div>
         </div>
     </div>

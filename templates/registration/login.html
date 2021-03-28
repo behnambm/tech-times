@@ -8,13 +8,13 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-10 col-xs-12 col-sm-12 mx-auto">
-            {% if form.non_field_errors %}
-                {% for err in form.non_field_errors %}
-                    <div class="alert alert-danger" role="alert">
-                        {{ err }}
-                    </div>
-                {% endfor %}
-            {% endif %}
+                {% if form.non_field_errors %}
+                    {% for err in form.non_field_errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ err }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>
@@ -27,12 +27,12 @@
                         ورود به سایت
                     </span>
                     {% csrf_token %}
-                    <div class="wrap-input100 validate-input m-b-16" data-validate = "نام کاربری نیاز است">
+                    <div class="wrap-input100 validate-input m-b-16" data-validate="نام کاربری نیاز است">
                         {{ form.username|add_class:"input100" }}
                         <span class="focus-input100"></span>
                     </div>
 
-                    <div class="wrap-input100 validate-input m-b-16" data-validate = "رمزعبور نیاز است">
+                    <div class="wrap-input100 validate-input m-b-16" data-validate="رمزعبور نیاز است">
                         {{ form.password|add_class:"input100" }}
                         <span class="focus-input100"></span>
                     </div>
