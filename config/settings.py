@@ -154,3 +154,6 @@ if not config('CI_STAGE', cast=bool, default=False):
     AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME', cast=str)
     AWS_S3_FILE_OVERWRITE = False
     AWS_S3_ENDPOINT_URL = config('AWS_S3_ENDPOINT_URL', cast=str)
+
+
+LOGIN_REDIRECT_URL = 'account:home'

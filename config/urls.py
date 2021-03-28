@@ -20,6 +20,7 @@ from account.views import AccountLoginView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls')),
+    path('account/', include('account.urls')),
     path('login/', AccountLoginView.as_view(), name='login'),
 ]
 
