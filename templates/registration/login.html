@@ -1,0 +1,72 @@
+{% extends 'registration/base.html' %}
+{% load widget_tweaks %}
+
+{% block tabtitle %}ورود  |  تِک تایمز{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-xs-12 col-sm-12 mx-auto">
+            {% if form.non_field_errors %}
+                {% for err in form.non_field_errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ err }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form flex-sb flex-w" method="post">
+                    <span class="login100-form-title p-b-51">
+                        ورود به سایت
+                    </span>
+                    {% csrf_token %}
+                    <div class="wrap-input100 validate-input m-b-16" data-validate = "نام کاربری نیاز است">
+                        {{ form.username|add_class:"input100" }}
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-16" data-validate = "رمزعبور نیاز است">
+                        {{ form.password|add_class:"input100" }}
+                        <span class="focus-input100"></span>
+                    </div>
+                    {% if form.password.errors %}sd
+                    {% endif %}
+
+                    <div class="flex-sb-m w-full p-t-3">
+                        <div>
+                            <a href="#" class="txt1">
+                                فراموشی رمز عبور
+                            </a>
+                        </div>
+                    </div>
+                    <div class="flex-sb-m w-full">
+                        <div>
+                            <a href="" class="txt1">
+                                ثبت نام
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="container-login100-form-btn m-t-17">
+                        <button class="login100-form-btn" type="submit">
+                            ورود
+                        </button>
+                    </div>
+                </form>
+                <hr>
+                <div class="container-login100-form-btn m-t-17">
+                    <a href="{% url 'blog:home' %}" class="back-to-site" type="submit">
+                        بازگشت به سایت
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
