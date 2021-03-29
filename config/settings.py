@@ -155,5 +155,5 @@ if not config('CI_STAGE', cast=bool, default=False):
     AWS_S3_FILE_OVERWRITE = False
     AWS_S3_ENDPOINT_URL = config('AWS_S3_ENDPOINT_URL', cast=str)
 
-
+LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'account:home'
