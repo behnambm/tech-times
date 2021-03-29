@@ -51,6 +51,11 @@
         <!-- Right navbar links -->
         <ul class="navbar-nav mr-auto-navbav">
             <li class="nav-item">
+                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="{% url 'blog:home' %}">
+                    نمایش سایت
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
                     <i class="fas fa-sign-out-alt"></i>
                 </a>
@@ -62,7 +67,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="index3.html" class="brand-link">
+        <a href="{% url 'account:home' %}" class="brand-link">
             <span class="brand-text font-weight-light fvazir" style="font-weight: 500 !important; color: #FFF;">پنل نویسندگان</span>
         </a>
 

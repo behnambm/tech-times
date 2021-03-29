@@ -10,12 +10,24 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav mr-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item my-nav-item">
+                        <a href="{% url 'account:home' %}" class="nav-link">
+                            <i class="fa fa-user-edit" style="font-size: 0.9rem;"></i>
+                            پنل نویسندگان
+                        </a>
+                    </li>
+                    <li class="nav-item my-nav-item">
+                        <a href="#" class="nav-link">خروج</a>
+                    </li>
+                {% else %}
                 <li class="nav-item my-nav-item">
-                    <a class="nav-link" href="base.html">ورود</a>
+                    <a class="nav-link" href="{% url 'login' %}">ورود</a>
                 </li>
                 <li class="nav-item my-nav-item">
                     <a class="nav-link" href="about.html">ثبت نام</a>
                 </li>
+                {% endif %}
             </ul>
         </div>
     </div>
