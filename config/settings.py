@@ -157,3 +157,4 @@ if not config('CI_STAGE', cast=bool, default=False):
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'account:home'
+LOGOUT_REDIRECT_URL = 'blog:home'
