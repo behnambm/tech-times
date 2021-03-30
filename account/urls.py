@@ -1,8 +1,13 @@
 from django.contrib.auth import views
 from django.urls import path
 
-from .views import AccountView
-from .views import AccountLoginView
+from .views import (
+    AccountView,
+    AccountLoginView,
+    RegistrationView,
+    activate,
+    check_email,
+)
 
 app_name = 'account'
 urlpatterns = [
@@ -10,6 +15,10 @@ urlpatterns = [
 
     path('login/', AccountLoginView.as_view(), name='login'),
     path('logout/', views.LogoutView.as_view(), name='logout'),
+
+    path('register/', RegistrationView.as_view(), name='register'),
+    path('activate/<uid>/<token>/', activate, name='activate'),
+    path('register/check/', check_email, name='check_email'),
     # path('password_change/', views.PasswordChangeView.as_view(), name='password_change'),
     # path('password_change/done/', views.PasswordChangeDoneView.as_view(), name='password_change_done'),
     #
