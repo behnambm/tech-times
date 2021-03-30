@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>تایید ایمیل </title>
+    <style>
+        * {
+            direction: rtl;
+        }
+        h1{
+            font-size: 1.7rem;
+        }
+        .container {
+            width: 80%;
+            display: block;
+            padding: 10px;
+            margin: 0 auto;
+            box-shadow: 0 0 5px 0 #ccc;
+            border-radius: 5px;
+        }
+
+        header{
+            text-align: center;
+            display: block;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        article a {
+            text-decoration: none;
+            color: #FFF !important;
+            background-color: #00baba;
+            padding: 7px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+        }
+        p {
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="head-title">
+                تِک تایمز |‌ Tech Times
+            </h1>
+            <hr>
+            <article>
+                <p>
+                    با کلیک بر روی لینک زیر اکانت خود را فعال کنید.
+                </p>
+                <a href="{{ protocol }}://{{ domain }}{% url 'account:activate' uid token %}">فعال سازی</a>
+            </article>
+        </header>
+        <br><br><br>
+        <p>در صورت کار نکردن لینک بالا از این لینک استفاده کنید.</p>
+        <a href="{{ protocol }}://{{ domain }}{% url 'account:activate' uid token %}" style="direction: ltr;">
+            {{ protocol }}://{{ domain }}{% url 'account:activate' uid token %}
+        </a>
+    </div>
+</body>
+</html>

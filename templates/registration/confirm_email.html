@@ -1,0 +1,23 @@
+{% extends 'registration/base.html' %}
+{% load widget_tweaks %}
+
+{% block tabtitle %}تایید ایمیل  |  تِک تایمز{% endblock %}
+
+{% block content %}
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <br><br>
+                برای فعال سازی اکانت، لطفا ایمیل خود را چک کنید.
+                <br><small style="color: #888;">پوشه spam را نیز چک کنید.</small>
+                <hr>
+                <div class="container-login100-form-btn m-t-17">
+                    <a href="{% url 'blog:home' %}" class="back-to-site" type="submit">
+                        بازگشت به سایت
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
