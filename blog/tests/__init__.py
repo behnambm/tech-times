@@ -10,15 +10,18 @@ class BaseTestCase(TestCase):
     @classmethod
     def setUpTestData(cls):
         """Test data for User model"""
-        behnam = User.objects.create(
+        cls.behnam = User.objects.create_user(
             username='behnam',
             first_name='Behnam',
-            email='behnam.mohamadzadeh21@gmail.com'
+            email='behnam.mohamadzadeh21@gmail.com',
+            password='123',
         )
-        hugo = User.objects.create(
+
+        cls.hugo = User.objects.create_user(
             username='hugo',
             first_name='Hugo',
-            email='hugoalfredha@gmail.com'
+            email='hugoalfredha@gmail.com',
+            password='123',
         )
 
         # to prevent sending data to Arvan Cloud
@@ -30,7 +33,7 @@ class BaseTestCase(TestCase):
             content='Content for article 1',
             slug='article-1',
             status='published',
-            author=behnam,
+            author=cls.behnam,
             thumbnail=File(open('static/blog/img/home-bg.jpg', 'rb')),
         )
         Article.objects.create(
@@ -38,7 +41,7 @@ class BaseTestCase(TestCase):
             content='Content for article 2',
             slug='article-2',
             status='published',
-            author=behnam,
+            author=cls.behnam,
             thumbnail=File(open('static/blog/img/home-bg.jpg', 'rb')),
         )
         Article.objects.create(
@@ -46,7 +49,7 @@ class BaseTestCase(TestCase):
             content='Content for article 3',
             slug='article-3',
             status='draft',
-            author=behnam,
+            author=cls.behnam,
             thumbnail=File(open('static/blog/img/home-bg.jpg', 'rb')),
         )
         Article.objects.create(
@@ -54,7 +57,7 @@ class BaseTestCase(TestCase):
             content='Content for article 4',
             slug='article-4',
             status='draft',
-            author=hugo,
+            author=cls.hugo,
             thumbnail=File(open('static/blog/img/home-bg.jpg', 'rb')),
         )
         Article.objects.create(
@@ -62,7 +65,7 @@ class BaseTestCase(TestCase):
             content='Content for article 5',
             slug='article-5',
             status='published',
-            author=behnam,
+            author=cls.behnam,
             thumbnail=File(open('static/blog/img/home-bg.jpg', 'rb')),
         )
         Article.objects.create(
@@ -70,7 +73,7 @@ class BaseTestCase(TestCase):
             content='Content for article 6',
             slug='article-6',
             status='rejected',
-            author=behnam,
+            author=cls.behnam,
             thumbnail=File(open('static/blog/img/home-bg.jpg', 'rb')),
         )
         Article.objects.create(
@@ -78,7 +81,7 @@ class BaseTestCase(TestCase):
             content='Content for article 7',
             slug='article-7',
             status='published',
-            author=behnam,
+            author=cls.behnam,
             thumbnail=File(open('static/blog/img/home-bg.jpg', 'rb')),
         )
         Article.objects.create(
@@ -86,7 +89,7 @@ class BaseTestCase(TestCase):
             content='Content for article 8',
             slug='article-8',
             status='published',
-            author=behnam,
+            author=cls.behnam,
             thumbnail=File(open('static/blog/img/home-bg.jpg', 'rb')),
         )
         Article.objects.create(
@@ -94,7 +97,7 @@ class BaseTestCase(TestCase):
             content='Content for article 9',
             slug='article-9',
             status='pending',
-            author=behnam,
+            author=cls.behnam,
             thumbnail=File(open('static/blog/img/home-bg.jpg', 'rb')),
         )
         Article.objects.create(
@@ -102,7 +105,7 @@ class BaseTestCase(TestCase):
             content='Content for article 10',
             slug='article-10',
             status='published',
-            author=hugo,
+            author=cls.hugo,
             thumbnail=File(open('static/blog/img/home-bg.jpg', 'rb')),
         )
         Article.objects.create(
@@ -110,7 +113,7 @@ class BaseTestCase(TestCase):
             content='Content for article 11',
             slug='article-11',
             status='draft',
-            author=hugo,
+            author=cls.hugo,
             thumbnail=File(open('static/blog/img/home-bg.jpg', 'rb')),
         )
 
