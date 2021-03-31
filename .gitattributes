@@ -1,0 +1,3 @@
+static/account/plugins/* linguist-vendored
+static/blog/vendor/* linguist-vendored
+static/registration/* linguist-vendored
