@@ -46,7 +46,7 @@ class ViewsTestCase(BaseTestCase):
         response = self.client.get(reverse('blog:detail', args=('doesnt-exits',)))
         self.assertEqual(response.status_code, 404)
 
-    def test_cat_visit_articles_that_are_exist(self):
+    def test_can_visit_articles_that_are_exist(self):
         self.assertEqual(self.published_response.status_code, 200)
 
     def test_author_for_article_is_correct(self):
