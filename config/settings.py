@@ -155,13 +155,15 @@ if not config('CI_STAGE', cast=bool, default=False):
     AWS_S3_FILE_OVERWRITE = False
     AWS_S3_ENDPOINT_URL = config('AWS_S3_ENDPOINT_URL', cast=str)
 
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = config('EMAIL_HOST', cast=str)
+    EMAIL_PORT = config('EMAIL_PORT', cast=int)
+    EMAIL_HOST_USER = config('EMAIL_HOST_USER', cast=str)
+    EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', cast=str)
+    EMAIL_USE_TLS = True
+
 LOGIN_URL = 'account:login'
 LOGIN_REDIRECT_URL = 'account:home'
 LOGOUT_REDIRECT_URL = 'blog:home'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = config('EMAIL_HOST', cast=str)
-EMAIL_PORT = config('EMAIL_PORT', cast=int)
-EMAIL_HOST_USER = config('EMAIL_HOST_USER', cast=str)
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', cast=str)
-EMAIL_USE_TLS = True
+
