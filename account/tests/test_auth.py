@@ -8,7 +8,6 @@ from django.conf import settings
 
 from ..models import User
 from . import BaseTestCase
-from utils import extract_uid_token
 
 """
 All pre-populated data for testing are inside __init__.py.BaseTestCase.setUpTestData
