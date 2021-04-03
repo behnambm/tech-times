@@ -1,3 +1,71 @@
 {% extends 'account/base.html' %}
 
 {% block tabtitle %}پنل نویسندگان {% endblock %}
+
+
+{% block content %}
+    {% if object_list %}
+        <div class="card fvazir">
+            <div class="card-header">
+                <h3 class="card-title float-left">
+                    لیست ۱۰ مقاله اخیر
+                    {% if user.is_superuser %}
+                        سایت
+                    {% else %}
+                        شما
+                    {% endif %}
+                </h3>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>عنوان</th>
+
+                        {% if user.is_superuser %}
+                            <th>نویسنده</th>
+                        {% endif %}
+
+                        <th>وضعیت</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for article in object_list %}
+                        <tr>
+                            <td>{{ article.title }}</td>
+
+                            {% if user.is_superuser %}
+                                <td>
+                                    {% if article.author.get_full_name %}
+                                        {{ article.author.get_full_name }}
+                                    {% else %}
+                                        {{ article.author.username }}
+                                    {% endif %}
+                                </td>
+                            {% endif %}
+
+                            <td>
+                                {% if article.status == 'published' %}
+                                    <span class="badge badge-success">منتشر شده</span>
+                                {% elif article.status == 'draft' %}
+                                    <span class="badge badge-warning text-black">پیش نویس</span>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                <a href="{% url 'blog:detail' article.slug %}" class="badge bg-primary" target="_blank"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% else %}
+        <h5 class="fvazir">
+            مقاله ای پیدا نشد.
+        </h5>
+    {% endif %}
+{% endblock %}
