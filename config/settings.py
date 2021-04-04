@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'utils',
     'storages',
     'django_gravatar',
+    'crispy_forms',
     'widget_tweaks',
 ]
 
@@ -167,3 +168,4 @@ LOGIN_REDIRECT_URL = 'account:home'
 LOGOUT_REDIRECT_URL = 'blog:home'
 
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
