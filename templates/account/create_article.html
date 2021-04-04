@@ -1,20 +1,21 @@
 {% extends 'account/base.html' %}
 {% load crispy_forms_tags %}
+{% load widget_tweaks %}
 
 {% block tabtitle %}ایجاد مقاله{% endblock %}
 
 {% block content %}
     <form method="post" enctype="multipart/form-data" class="row" id="create-article-form">
         {% csrf_token %}
-        <div class="col-6">{{ form.title|as_crispy_field }}</div>
-        <div class="col-6">{{ form.slug|as_crispy_field }}</div>
+        <div class="col-6">{{ form.title|add_class:'fvazir'|as_crispy_field }}</div>
+        <div class="col-6">{{ form.slug|add_class:'fvazir'|as_crispy_field }}</div>
         <div class="col-12">{{ form.content|safe }}</div>
-        <div class="col-2">{{ form.thumbnail|as_crispy_field }}</div>
-        <div class="col-3">{{ form.publish|as_crispy_field }}</div>
+        <div class="col-2">{{ form.thumbnail|add_class:'fvazir'|as_crispy_field }}</div>
+        <div class="col-3">{{ form.publish|add_class:'fvazir'|as_crispy_field }}</div>
         <div class="col-12"></div>
         {% if user.is_superuser %}
-            <div class="col-3">{{ form.author|as_crispy_field }}</div>
-            <div class="col-3">{{ form.status|as_crispy_field }}</div>
+            <div class="col-3">{{ form.author|add_class:'fvazir'|as_crispy_field }}</div>
+            <div class="col-3">{{ form.status|add_class:'fvazir'|as_crispy_field }}</div>
         {% endif %}
         <div class="col-12"></div>
         <br>
