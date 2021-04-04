@@ -1,0 +1,13 @@
+{% extends 'account/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block tabtitle %}ایجاد مقاله{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-6">{{ form.title|as_crispy_field }}</div>
+        <div class="col-6">{{ form.slug|as_crispy_field }}</div>
+        <div class="col-12">{{ form.content|safe|add_class: }}</div>
+    </div>
+{{ form }}
+{% endblock %}
