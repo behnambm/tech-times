@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from ckeditor_uploader.fields import RichTextUploadingField
 
 from account.models import User
 from utils import convert_to_jalali
@@ -24,7 +25,7 @@ class Article(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='articles', verbose_name='نویسنده')
     title = models.CharField(max_length=200, verbose_name='عنوان')
     slug = models.SlugField(unique=True, verbose_name='آدرس')
-    content = models.TextField(verbose_name='محتوا')
+    content = RichTextUploadingField(verbose_name='محتوا')
     thumbnail = models.ImageField(upload_to='images', verbose_name='تصویر')
     created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
