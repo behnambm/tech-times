@@ -11,11 +11,12 @@ from django.core.mail import EmailMessage
 from django.http import HttpResponse
 from django.shortcuts import redirect, render, reverse
 from django.conf import settings
-
+from django.urls import reverse_lazy
 
 from .forms import AccountAuthenticationForm, UserRegistrationForm
 from blog.models import Article
 from .models import User
+from .mixins import AuthorAccessMixin
 
 
 class AccountLoginView(views.LoginView):
@@ -77,4 +78,10 @@ def activate(request, uid, token):
         raise Exception('Invalid confirmation link')
     except:
         return HttpResponse('invalid')
+
+
+class CreateArticleView(AuthorAccessMixin, CreateView):
+    model = Article
+    template_name = 'account/create_article.html'
+    success_url = reverse_lazy('account:home')
 

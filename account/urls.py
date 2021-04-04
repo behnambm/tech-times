@@ -7,11 +7,13 @@ from .views import (
     RegistrationView,
     activate,
     check_email,
+    CreateArticleView,
 )
 
 app_name = 'account'
 urlpatterns = [
     path('', AccountView.as_view(), name='home'),
+    path('create/', CreateArticleView.as_view(), name='create'),
 
     path('login/', AccountLoginView.as_view(), name='login'),
     path('logout/', views.LogoutView.as_view(), name='logout'),
