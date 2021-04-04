@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'django_gravatar',
     'crispy_forms',
     'widget_tweaks',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -167,5 +169,20 @@ LOGIN_URL = 'account:login'
 LOGIN_REDIRECT_URL = 'account:home'
 LOGOUT_REDIRECT_URL = 'blog:home'
 
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
+CKEDITOR_UPLOAD_PATH = "article_uploads/"
+CKEDITOR_STORAGE_BACKEND = 'storages.backends.s3boto3.S3Boto3Storage'
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink', 'Image'],
+            ['RemoveFormat', 'Source'],
+            ['TextColor', 'BGColor', '-'],
+        ]
+    }
+}
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
