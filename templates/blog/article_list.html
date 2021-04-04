@@ -17,7 +17,7 @@
                     {{ article.title }}
                 </h2>
                 <h4 class="post-subtitle">
-                    {{ article.content|truncatewords:35 }}
+                    {{ article.content|truncatewords:35|striptags }}
                 </h4>
             </a>
             <p class="post-meta" style="text-align: left">

@@ -13,7 +13,7 @@
 
 {% block content %}
     <div class="article-content shadow p-3 mb-5 bg-white rounded">
-        {{ object.content|linebreaks }}
+        {{ object.content|safe }}
     </div>
     <div class="author-footer shadow p-3 mb-5 bg-white rounded">
         <div class="row">
