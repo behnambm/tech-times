@@ -16,7 +16,7 @@ from django.urls import reverse_lazy
 from .forms import AccountAuthenticationForm, UserRegistrationForm
 from blog.models import Article
 from .models import User
-from .mixins import AuthorAccessMixin
+from .mixins import AuthorAccessMixin, AuthorDefaultFormMixin
 
 
 class AccountLoginView(views.LoginView):
@@ -80,7 +80,7 @@ def activate(request, uid, token):
         return HttpResponse('invalid')
 
 
-class CreateArticleView(AuthorAccessMixin, CreateView):
+class CreateArticleView(AuthorAccessMixin, AuthorDefaultFormMixin, CreateView):
     model = Article
     template_name = 'account/create_article.html'
     success_url = reverse_lazy('account:home')
