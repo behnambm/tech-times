@@ -1,4 +1,6 @@
 {% load gravatar %}
+{% load custom_tags %}
+
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="{% url 'account:home' %}" class="brand-link">
         <span class="brand-text font-weight-light fvazir" style="font-weight: 500 !important; color: #FFF;">پنل نویسندگان</span>
@@ -26,35 +28,19 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fa fa-scroll"></i>
-                        <p>
-                            بخش مقالات
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
+                <li class="nav-item">
+                    <a href="./index.html" class="nav-link">
+                        <i class="fa fa-bars"></i>
+                        <p>لیست مقالات</p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="./index.html" class="nav-link active">
-                                <i class="fa fa-bars"></i>
-                                <p>لیست مقالات</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{% url 'account:create' %}" class="nav-link">
-                                <i class="far fa-edit"></i>
-                                <p>ایجاد مقاله</p>
-                            </a>
-                        </li>
-                    </ul>
+                </li>
+                <li class="nav-item">
+                    {% link request 'account:create' 'ایجاد مقاله' 'fa-edit' %}
                 </li>
                 <li class="nav-item">
                     <a href="pages/widgets.html" class="nav-link">
-                        <i class="nav-icon fa fa-user"></i>
-                        <p>
-                            پروفایل
-                        </p>
+                        <i class="fa fa-user"></i>
+                        <p>پروفایل</p>
                     </a>
                 </li>
             </ul>

@@ -1,0 +1,4 @@
+<a href="{% url link_url %}" class="nav-link {% if request.resolver_match.view_name == link_url %}active{% endif %}">
+    <i class="fa {{ font_icon }}"></i>
+    <p>{{ content }}</p>
+</a>
