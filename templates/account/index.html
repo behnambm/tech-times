@@ -34,7 +34,7 @@
 
                     {% for article in object_list %}
                         <tr>
-                            <td>{{ article.title }}</td>
+                            <td style="width: 22%;">{{ article.title|truncatechars:30 }}</td>
 
                             {% if user.is_superuser %}
                                 <td>
