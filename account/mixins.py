@@ -22,7 +22,7 @@ class AuthorDefaultFormMixin:
     """
     def form_valid(self, form):
         self.obj = form.save(commit=False)
-        if self.request.user.is_author:
+        if not self.request.user.is_superuser and self.request.user.is_author:
             self.obj.author = self.request.user
 
             if not self.obj.status == 'pending':
