@@ -29,7 +29,7 @@ class AccountView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         if self.request.user.is_superuser:
             return Article.objects.order_by('-created')[:10]
-        return Article.objects.published().filter(author=self.request.user).order_by('-created')[:10]
+        return Article.objects.filter(author=self.request.user).order_by('-created')[:10]
 
 
 class RegistrationView(CreateView):
