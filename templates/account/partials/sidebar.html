@@ -28,6 +28,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
+                {% if user.is_superuser or user.is_author %}
                 <li class="nav-item">
                     <a href="./index.html" class="nav-link">
                         <i class="fa fa-bars"></i>
@@ -37,6 +38,7 @@
                 <li class="nav-item">
                     {% link request 'account:create' 'ایجاد مقاله' 'fa-edit' %}
                 </li>
+                {% endif %}
                 <li class="nav-item">
                     <a href="pages/widgets.html" class="nav-link">
                         <i class="fa fa-user"></i>

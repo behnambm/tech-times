@@ -34,7 +34,11 @@
 
                     {% for article in object_list %}
                         <tr>
-                            <td style="width: 22%;">{{ article.title|truncatechars:30 }}</td>
+                            <td style="width: 22%;">
+                                <a href="{% url 'blog:detail' article.slug %}" target="_blank">
+                                    {{ article.title|truncatechars:30 }}
+                                </a>
+                            </td>
 
                             {% if user.is_superuser %}
                                 <td>
