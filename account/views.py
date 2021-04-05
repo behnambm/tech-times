@@ -1,6 +1,6 @@
 from django.contrib.auth import views, login
 from django.views.generic.list import ListView
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
@@ -82,6 +82,11 @@ def activate(request, uid, token):
 
 class CreateArticleView(AuthorAccessMixin, AuthorDefaultFormMixin, CreateView):
     model = Article
-    template_name = 'account/create_article.html'
+    template_name = 'account/create_update_article.html'
     success_url = reverse_lazy('account:home')
 
+
+class UpdateArticleView(AuthorAccessMixin, AuthorDefaultFormMixin, UpdateView):
+    model = Article
+    template_name = 'account/create_update_article.html'
+    success_url = reverse_lazy('account:home')

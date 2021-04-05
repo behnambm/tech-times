@@ -55,7 +55,11 @@
                             </td>
 
                             <td>
-                                <a href="{% url 'blog:detail' article.slug %}" class="badge bg-primary" target="_blank"><i class="fa fa-eye"></i></a>
+                                {% if user.is_superuser or user == article.author and article.status == 'draft' %}
+                                <a href="{% url 'account:update' article.pk %}" class="badge badge-primary">
+                                    <i class="fa fa-edit"></i>&nbsp;ویرایش
+                                </a>
+                                {% endif %}
                             </td>
                         </tr>
                     {% endfor %}
