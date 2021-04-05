@@ -16,7 +16,11 @@ from django.urls import reverse_lazy
 from .forms import AccountAuthenticationForm, UserRegistrationForm
 from blog.models import Article
 from .models import User
-from .mixins import AuthorAccessMixin, AuthorDefaultFormMixin
+from .mixins import (
+    AuthorAccessMixin,
+    AuthorDefaultFormMixin,
+    UpdateAccessMixin,
+)
 
 
 class AccountLoginView(views.LoginView):
@@ -86,7 +90,7 @@ class CreateArticleView(AuthorAccessMixin, AuthorDefaultFormMixin, CreateView):
     success_url = reverse_lazy('account:home')
 
 
-class UpdateArticleView(AuthorAccessMixin, AuthorDefaultFormMixin, UpdateView):
+class UpdateArticleView(AuthorAccessMixin, AuthorDefaultFormMixin, UpdateAccessMixin, UpdateView):
     model = Article
     template_name = 'account/create_update_article.html'
     success_url = reverse_lazy('account:home')

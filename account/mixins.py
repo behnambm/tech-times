@@ -1,4 +1,7 @@
 from django.http import Http404
+from django.shortcuts import get_object_or_404
+
+from blog.models import Article
 
 
 class AuthorAccessMixin:
@@ -27,3 +30,12 @@ class AuthorDefaultFormMixin:
                 self.obj.status = 'draft'
 
         return super().form_valid(form)
+
+
+class UpdateAccessMixin:
+    def dispatch(self, request, pk, *args, **kwargs):
+        article = get_object_or_404(Article, pk=pk)
+        if request.user.is_superuser or (article.status == 'draft' and article.author == request.user):
+            return super().dispatch(request, pk, *args, **kwargs)
+        raise Http404
+
