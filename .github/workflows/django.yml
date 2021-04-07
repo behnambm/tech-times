@@ -27,7 +27,7 @@ jobs:
         pip install -r requirements.txt
     - name: Install mysql Dependencies
       run: |
-        apt-get install python3-dev default-libmysqlclient-dev build-essential
+        sudo apt-get install python3-dev default-libmysqlclient-dev build-essential
     - name: Run Tests
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
