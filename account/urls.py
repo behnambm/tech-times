@@ -9,6 +9,7 @@ from .views import (
     check_email,
     CreateArticleView,
     UpdateArticleView,
+    ProfileView,
 )
 
 app_name = 'account'
@@ -16,6 +17,7 @@ urlpatterns = [
     path('', AccountView.as_view(), name='home'),
     path('create/', CreateArticleView.as_view(), name='create'),
     path('update/<pk>/', UpdateArticleView.as_view(), name='update'),
+    path('profile/', ProfileView.as_view(), name='profile'),
 
     path('login/', AccountLoginView.as_view(), name='login'),
     path('logout/', views.LogoutView.as_view(), name='logout'),

@@ -1,0 +1,25 @@
+{% extends 'account/base.html' %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+
+{% block tabtitle %}پروفایل کاربری{% endblock %}
+
+{% block content %}
+    <form method="post" class="row" id="profile-form">
+        {% csrf_token %}
+        <div class="col-6">{{ form.username|add_class:'fvazir'|as_crispy_field }}</div>
+        <div class="col-6">{{ form.email|add_class:'fvazir'|as_crispy_field }}</div>
+        <div class="col-6">{{ form.first_name|add_class:'fvazir'|as_crispy_field }}</div>
+        <div class="col-6">{{ form.last_name|add_class:'fvazir'|as_crispy_field }}</div>
+        <div class="col-6">{{ form.bio|add_class:'fvazir'|as_crispy_field }}</div>
+        <div class="col-6"><div class="form-group" style="padding-top: 30px;">
+            <a href="">تغییر رمزعبور</a>
+        </div></div>
+
+        <div class="col-12"></div>
+        <br>
+        <button type="submit" class="my-4 btn btn-primary fvazir col-4 offset-4">
+            بروزرسانی
+        </button>
+    </form>
+{% endblock %}

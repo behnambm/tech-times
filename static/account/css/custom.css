@@ -94,7 +94,7 @@ td.cke_dialog_ui_vbox_child div#cke_165_uiElement.cke_dialog_ui_html, .cke_dialo
     font-family: Vazir !important;
 }
 
-.form-group label.requiredField {
+.form-group label, .form-group  {
     font-family: Vazir;
     font-weight: 600;
 }

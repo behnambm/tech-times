@@ -94,3 +94,13 @@ class UpdateArticleView(AuthorAccessMixin, AuthorDefaultFormMixin, UpdateAccessM
     model = Article
     template_name = 'account/create_update_article.html'
     success_url = reverse_lazy('account:home')
+
+
+class ProfileView(LoginRequiredMixin, UpdateView):
+    template_name = 'account/profile.html'
+    fields = ('username', 'first_name', 'last_name', 'email', 'bio')
+    success_url = reverse_lazy('account:home')
+
+    def get_object(self):
+        return User.objects.get(pk=self.request.user.pk)
+
