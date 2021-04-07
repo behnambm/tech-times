@@ -26,6 +26,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool, default=False)
+DEVELOPMENT = config('DEVELOPMENT', cast=bool, default=False)
 
 ALLOWED_HOSTS = []
 
@@ -120,7 +121,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-if DEBUG:
+if DEVELOPMENT:
+    STATICFILES_DIRS = [
+        BASE_DIR / 'static',
+    ]
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -128,11 +132,16 @@ if DEBUG:
         }
     }
 
-    STATICFILES_DIRS = [
-        BASE_DIR / 'static',
-    ]
-
 else:
+    STATIC_ROOT = BASE_DIR / 'static'
+
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = config('EMAIL_HOST', cast=str)
+    EMAIL_PORT = config('EMAIL_PORT', cast=int)
+    EMAIL_HOST_USER = config('EMAIL_HOST_USER', cast=str)
+    EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', cast=str)
+    EMAIL_USE_TLS = True
+
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql', 
@@ -143,29 +152,21 @@ else:
             'PORT': config('MYSQL_PORT', cast=int, default=3306),
         }
     }
-    STATIC_ROOT = BASE_DIR / 'static'
 
-AUTH_USER_MODEL = 'account.User'
 
+# media configs
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
 
-PAGINATE_COUNT = 3
 
-
-if not config('CI_STAGE', cast=bool, default=False):
-    # to prevent setting Email configs in Github Actions CI 
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = config('EMAIL_HOST', cast=str)
-    EMAIL_PORT = config('EMAIL_PORT', cast=int)
-    EMAIL_HOST_USER = config('EMAIL_HOST_USER', cast=str)
-    EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', cast=str)
-    EMAIL_USE_TLS = True
-
+# auth configs
 LOGIN_URL = 'account:login'
 LOGIN_REDIRECT_URL = 'account:home'
 LOGOUT_REDIRECT_URL = 'blog:home'
+AUTH_USER_MODEL = 'account.User'
 
+
+# ckeditor configs 
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 CKEDITOR_UPLOAD_PATH = "ckeditor_uploads/"
 CKEDITOR_CONFIGS = {
@@ -181,4 +182,8 @@ CKEDITOR_CONFIGS = {
     }
 }
 
+# crsipy configs
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# other configs
+PAGINATE_COUNT = 3
