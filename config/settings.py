@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
 
     'utils',
-    'storages',
     'django_gravatar',
     'crispy_forms',
     'widget_tweaks',
@@ -84,15 +83,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 
 # Password validation
@@ -128,13 +118,32 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
-
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
+
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+
+    STATICFILES_DIRS = [
+        BASE_DIR / 'static',
+    ]
+
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql', 
+            'NAME': config('MYSQL_DB', cast=str),
+            'USER': config('MYSQL_USERNAME', cast=str),
+            'PASSWORD': config('MYSQL_PASSWORD', cast=str),
+            'HOST': config('MYSQL_HOST', cast=str),
+            'PORT': config('MYSQL_PORT', cast=int, default=3306),
+        }
+    }
+    STATIC_ROOT = BASE_DIR / 'static'
 
 AUTH_USER_MODEL = 'account.User'
 
@@ -143,21 +152,9 @@ MEDIA_URL = '/media/'
 
 PAGINATE_COUNT = 3
 
-# prepare to deploy to Heroku
-if config('HEROKU_DEPLOY', cast=bool, default=False):
-    import django_heroku
-    django_heroku.settings(locals(), test_runner=False)
 
-
-# Arvan cloud bucket storage
 if not config('CI_STAGE', cast=bool, default=False):
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID', cast=str)
-    AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY', cast=str)
-    AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME', cast=str)
-    AWS_S3_FILE_OVERWRITE = False
-    AWS_S3_ENDPOINT_URL = config('AWS_S3_ENDPOINT_URL', cast=str)
-
+    # to prevent setting Email configs in Github Actions CI 
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = config('EMAIL_HOST', cast=str)
     EMAIL_PORT = config('EMAIL_PORT', cast=int)
@@ -170,8 +167,7 @@ LOGIN_REDIRECT_URL = 'account:home'
 LOGOUT_REDIRECT_URL = 'blog:home'
 
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
-CKEDITOR_UPLOAD_PATH = "article_uploads/"
-CKEDITOR_STORAGE_BACKEND = 'storages.backends.s3boto3.S3Boto3Storage'
+CKEDITOR_UPLOAD_PATH = "ckeditor_uploads/"
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Custom',
