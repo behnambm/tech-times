@@ -10,7 +10,7 @@
         <div class="col-6">{{ form.title|add_class:'fvazir'|as_crispy_field }}</div>
         <div class="col-6">{{ form.slug|add_class:'fvazir'|as_crispy_field }}</div>
         <div class="col-12">{{ form.content|safe }}</div>
-        <div class="col-2">{{ form.thumbnail|add_class:'fvazir'|as_crispy_field }}</div>
+        <div class="col-4">{{ form.thumbnail|add_class:'fvazir'|as_crispy_field }}</div>
         <div class="col-3">{{ form.publish|add_class:'fvazir'|as_crispy_field }}</div>
         <div class="col-12"></div>
         {% if user.is_superuser %}
@@ -33,6 +33,12 @@
         {% endif %}
         <div class="col-12"></div>
         <br>
-        <button type="submit" class="my-4 btn btn-primary fvazir col-4 offset-4">ایجاد</button>
+        <button type="submit" class="my-4 btn btn-primary fvazir col-4 offset-4">
+            {% if request.resolver_match.view_name == 'account:update' %}
+            بروزرسانی
+            {% else %}
+            ایجاد
+            {% endif %}
+        </button>
     </form>
 {% endblock %}

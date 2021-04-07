@@ -1,3 +1,15 @@
+@font-face {
+    font-family: Vazir;
+    src: url('../../admin/css/fonts/Vazir-Regular.eot');
+    src: url('../../admin/css/fonts/Vazir-Regular.eot');
+    src: url('../../admin/css/fonts/Vazir-Regular.eot?#iefix') format('embedded-opentype'),
+         url('../../admin/css/fonts/Vazir-Regular.woff2') format('woff2'),
+         url('../../admin/css/fonts/Vazir-Regular.woff') format('woff'),
+         url('../../admin/css/fonts/Vazir-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-display:swap;
+}
+
 *{
     direction: rtl !important;
 }
@@ -78,7 +90,7 @@ li.nav-item a.nav-link i.fas.fa-sign-out-alt:hover {
 .fvazir, a, p, .cke_reset_all, span.cke_dialog_ui_button, select.cke_dialog_ui_input_select,
 td.cke_dialog_ui_vbox_child div#cke_165_uiElement.cke_dialog_ui_html, .cke_dialog_title, .cke_dialog .ImagePreviewBox table td,
 .cke_combo_text, .cke_button_label, .cke_dialog_body label, a.cke_dialog_tab_selected, a.cke_dialog_tab
-, .cke_button_label, a.cke_dialog_tab_selected, .cke_reset_all{
+, .cke_button_label, a.cke_dialog_tab_selected, .cke_reset_all, div.container-fluid form.row div div.form-group div{
     font-family: Vazir !important;
 }
 
