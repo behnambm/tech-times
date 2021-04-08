@@ -30,10 +30,7 @@
                 data-accordion="false">
                 {% if user.is_superuser or user.is_author %}
                 <li class="nav-item">
-                    <a href="./index.html" class="nav-link">
-                        <i class="fa fa-bars"></i>
-                        <p>لیست مقالات</p>
-                    </a>
+                    {% link request 'account:list' 'لیست مقالات' 'fa-bars' %}
                 </li>
                 <li class="nav-item">
                     {% link request 'account:create' 'ایجاد مقاله' 'fa-edit' %}

@@ -8,7 +8,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_text
 from django.core.mail import EmailMessage
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.shortcuts import redirect, render, reverse
 from django.conf import settings
 from django.urls import reverse_lazy
@@ -103,4 +103,16 @@ class ProfileView(LoginRequiredMixin, UpdateView):
 
     def get_object(self):
         return User.objects.get(pk=self.request.user.pk)
+
+
+class ArticleListView(ListView):
+    template_name = 'account/articles_list.html'
+    paginate_by = 10
+
+    def get_queryset(self):
+        if self.request.user.is_superuser:
+            return Article.objects.all()
+        elif self.request.user.is_author:
+            return Article.objects.filter(author=self.request.user)
+        raise Http404
 
