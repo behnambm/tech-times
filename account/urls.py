@@ -19,6 +19,7 @@ urlpatterns = [
     path('create/', CreateArticleView.as_view(), name='create'),
     path('update/<pk>/', UpdateArticleView.as_view(), name='update'),
     path('profile/', ProfileView.as_view(), name='profile'),
+    path('profile/<username>/', ProfileView.as_view(), name='profile'),
     path('list/', ArticleListView.as_view(), name='list'),
     path('list/page/<int:page>/', ArticleListView.as_view(), name='list'),
 

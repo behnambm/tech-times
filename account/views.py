@@ -9,7 +9,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_text
 from django.core.mail import EmailMessage
 from django.http import HttpResponse, Http404
-from django.shortcuts import redirect, render, reverse
+from django.shortcuts import redirect, render, reverse, get_object_or_404
 from django.conf import settings
 from django.urls import reverse_lazy
 
@@ -100,8 +100,12 @@ class ProfileView(LoginRequiredMixin, UpdateView):
     template_name = 'account/profile.html'
     fields = ('username', 'first_name', 'last_name', 'email', 'bio')
     success_url = reverse_lazy('account:home')
+    context_object_name = 'user_obj' # to stop causing conflict with authentication app's user object
 
     def get_object(self):
+        if self.request.user.is_superuser and self.kwargs.get('username'):
+            return get_object_or_404(User, username=self.kwargs.get('username'))
+
         return User.objects.get(pk=self.request.user.pk)
 
 
