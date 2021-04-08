@@ -1,4 +1,4 @@
-# Tech Times
+## Tech Times
 
 [![Actions Status](https://github.com/behnambm/tech-times/workflows/Tech%20Times%20CI/badge.svg
 )](https://github.com/behnambm/tech-times/actions)
@@ -11,29 +11,29 @@
 Tech Times like NYTimes 😜
 
 
-#### Visit live version
-https://tech-times.herokuapp.com/
+### Visit live version
+https://behnambm.pythonanywhere.com
 
-#### More to know
-
-- CI/CD: Github Actions / Heroku
-- Cloud Storage: Arvan Cloud
-- Database Back-end: Heroku-Postgresql
+### How to run locally 
+```
+git clone https://github.com/behnambm/tech-times.git
+cd tech-times
+virtualenv venv
+source venv/bin/activate
+pip install -r requirements.txt
+mv .env.sample .env  # change the variables and set the proper values
+python manage.py migrate
+python manage.py collectstatic
+python manage.py createsuperuser  # this is optional, and used to access admin panel in django 
+python manage.py runserver
+and finally go to: http://127.0.0.1:8000
+```
 
 <details>
-<summary>Developers only </summary>
+<summary>More detail</summary>
 
-#### How to run locally 
-```
-    git clone https://github.com/behnambm/tech-times.git
-    cd tech-times
-    virtualenv venv
-    source venv/bin/activate
-    pip install -r requirements.txt
-    mv .env.sample .env  # change the variables and set the proper values
-    python manage.py migrate
-    python manage.py createsuperuser  # this is optional, and used to access admin panel in django 
-    python manage.py runserver
-    and finally go to: http://127.0.0.1:8000
-```
+- CI: Github Actions
+- Hosting: PythonAnywhere
+- Database: MySql
+- SMTP provider: Google Mail
 </details> 
