@@ -6,6 +6,9 @@ from blog.models import Article
 
 class AuthorAccessMixin:
     def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            raise Http404
+
         if not request.user.is_author:
             raise Http404()
         self.fields = ['title', 'slug', 'content', 'thumbnail', 'publish', ]
