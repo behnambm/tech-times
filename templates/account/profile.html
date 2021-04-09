@@ -1,6 +1,7 @@
 {% extends 'account/base.html' %}
 {% load crispy_forms_tags %}
 {% load widget_tweaks %}
+{% load custom_filters %}
 
 {% block tabtitle %}پروفایل کاربری{% endblock %}
 
@@ -14,8 +15,22 @@
         <div class="col-6">{{ form.bio|add_class:'fvazir'|as_crispy_field }}</div>
         <div class="col-6"><div class="form-group" style="padding-top: 30px;">
             <a href="">تغییر رمزعبور</a>
-        </div></div>
+            </div>
+        </div>
 
+        {% if user.is_superuser %}
+        <div class="col-4">{{ form.is_active|as_crispy_field }}</div>
+        <div class="col-4">{{ form.is_author|as_crispy_field }}</div>
+
+        <div class="col-4">
+            <div class="form-group" style="font-size: 0.9rem;">
+                {{ form.last_login.value|to_fa_datetime|none_to:'-' }}
+                <br>
+                <small style="color: #6c757d;">تاریخ و زمان آخرین ورود</small>
+            </div>
+        </div>
+
+        {% endif %}
         <div class="col-12"></div>
         <br>
         <button type="submit" class="my-4 btn btn-primary fvazir col-4 offset-4">

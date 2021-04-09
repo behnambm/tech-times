@@ -103,8 +103,11 @@ class ProfileView(LoginRequiredMixin, UpdateView):
     context_object_name = 'user_obj' # to stop causing conflict with authentication app's user object
 
     def get_object(self):
-        if self.request.user.is_superuser and self.kwargs.get('username'):
-            return get_object_or_404(User, username=self.kwargs.get('username'))
+        if self.request.user.is_superuser:
+            self.fields += ('is_author', 'is_active', 'last_login')
+            
+            if self.kwargs.get('username'):
+                return get_object_or_404(User, username=self.kwargs.get('username'))
 
         return User.objects.get(pk=self.request.user.pk)
 
