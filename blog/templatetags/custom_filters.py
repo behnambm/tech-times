@@ -12,3 +12,10 @@ def to_fa_numbers(value):
         return convert_to_persian_number(str(value))
     except:
         return value
+
+
+@register.filter(name='none_to')
+def none_to(value, to):
+    if not value:
+        return to
+    return value
