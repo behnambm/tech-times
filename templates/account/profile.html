@@ -24,7 +24,7 @@
 
         <div class="col-4">
             <div class="form-group" style="font-size: 0.9rem;">
-                {{ form.last_login.value|to_fa_datetime|none_to:'-' }}
+                {{ form.last_login.value|to_jalali_datetime|none_to:'-' }}
                 <br>
                 <small style="color: #6c757d;">تاریخ و زمان آخرین ورود</small>
             </div>
