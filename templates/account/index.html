@@ -5,17 +5,18 @@
 
 {% block content %}
     {% if object_list %}
-        {% if q %}
-        <h5 class="fvazir">جستجو برای «{{ q }}»</h5>
-        {% endif %}
         <div class="card fvazir">
             <div class="card-header">
                 <h3 class="card-title float-left">
-                    لیست ۱۰ مقاله اخیر
-                    {% if user.is_superuser %}
-                        سایت
+                    {% if q %}
+                        <h5 class="fvazir">جستجو برای «{{ q }}»</h5>
                     {% else %}
-                        شما
+                        لیست ۱۰ مقاله اخیر
+                        {% if user.is_superuser %}
+                            سایت
+                        {% else %}
+                            شما
+                        {% endif %}
                     {% endif %}
                 </h3>
             </div>
