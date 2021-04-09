@@ -11,9 +11,9 @@
     <ul class="navbar-nav mr-auto-navbav">
         <li class="nav-item">
             <!-- SEARCH FORM -->
-            <form class="form-inline fvazir" style="padding: 5px;">
+            <form method='GET' action="{% url 'account:home' %}" class="form-inline fvazir" style="padding: 5px;">
                 <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="جستجو"
+                    <input name='q' class="form-control form-control-navbar" type="search" placeholder="جستجو"
                            aria-label="Search">
                     <div class="input-group-append">
                         <button class="btn btn-navbar" type="submit">

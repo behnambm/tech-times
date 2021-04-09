@@ -12,6 +12,7 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import redirect, render, reverse, get_object_or_404
 from django.conf import settings
 from django.urls import reverse_lazy
+from django.db.models import Q 
 
 from .forms import AccountAuthenticationForm, UserRegistrationForm
 from blog.models import Article
@@ -31,9 +32,21 @@ class AccountView(LoginRequiredMixin, ListView):
     template_name = 'account/index.html'
 
     def get_queryset(self):
+        if self.request.GET.get('q'):
+            q = self.request.GET.get('q')
+            return Article.objects.filter(Q(title__icontains=q) | Q(content__icontains=q))
+
         if self.request.user.is_superuser:
             return Article.objects.order_by('-created')[:10]
         return Article.objects.filter(author=self.request.user).order_by('-created')[:10]
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        if self.request.GET.get('q'):
+            context['q'] = self.request.GET.get('q')
+        
+        return context
 
 
 class RegistrationView(CreateView):
