@@ -123,3 +123,6 @@ class ArticleListView(ListView):
             return Article.objects.filter(author=self.request.user)
         raise Http404
 
+
+class AccountPasswordChangeView(views.PasswordChangeView):
+    success_url = reverse_lazy('account:password_change_done')
