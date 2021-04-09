@@ -83,3 +83,8 @@ a, p {
 .article-content {
     font-size: 1.1rem;
 }
+
+.about-author-div small {
+    color: #888;
+    font-size: 0.85rem; 
+}

@@ -20,7 +20,7 @@ class ArticleDetailView(DetailView):
 
 class AuthorProfileView(ListView):
     paginate_by = settings.PAGINATE_COUNT
-    template_name = 'account/user_detail.html'
+    template_name = 'blog/user_detail.html'
 
     def get_queryset(self):
         global author

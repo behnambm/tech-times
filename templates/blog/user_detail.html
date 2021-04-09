@@ -31,7 +31,7 @@
                     {{ article.title }}
                 </h2>
                 <h4 class="post-subtitle">
-                    {{ article.content|truncatewords:35 }}
+                    {{ article.content|truncatewords:35|striptags }}
                 </h4>
             </a>
             <p class="post-meta" style="text-align: left">
@@ -63,10 +63,11 @@
 {% endblock %}
 
 {% block left-sidebar %}
-    <div class="col-3 shadow p-3 mb-5 bg-white rounded" style="height: -moz-fit-content">
+    <div class="col-3 shadow p-3 mb-5 bg-white rounded fvazir about-author-div" style="height: -moz-fit-content">
         <img src="{% gravatar_url author.email 90 %}" alt="" id="author-gravatar-img">
+        <small>درباره نویسنده</small>
         <span id="author-bio-text">
-        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+        {{ author.bio}}
     </span>
     </div>
 {% endblock %}
