@@ -43,7 +43,7 @@ class AuthorDefaultFormMixin:
 class UpdateAccessMixin:
     def dispatch(self, request, pk, *args, **kwargs):
         article = get_object_or_404(Article, pk=pk)
-        if request.user.is_superuser or (article.status == 'draft' and article.author == request.user):
+        if request.user.is_superuser or (article.status in ['draft', 'rejected'] and article.author == request.user):
             return super().dispatch(request, pk, *args, **kwargs)
         raise Http404
 
