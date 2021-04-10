@@ -13,9 +13,11 @@
         <div class="col-6">{{ form.last_name|as_crispy_field }}</div>
         <div class="col-6">{{ form.bio|as_crispy_field }}</div>
         <div class="col-6">
+            {% if user_obj == user %}
             <div class="form-group" style="padding-top: 30px;">
                 <a href="{% url 'account:password_change' %}">تغییر رمزعبور</a>
             </div>
+            {% endif %}
         </div>
 
         {% if user.is_superuser %}
