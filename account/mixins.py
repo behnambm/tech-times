@@ -28,6 +28,11 @@ class AuthorDefaultFormMixin:
         if not self.request.user.is_superuser and self.request.user.is_author:
             self.obj.author = self.request.user
 
+            if self.request.resolver_match.view_name == 'account:update':
+                # form.save() does not update data that is coming from `update view`
+                if self.request.POST.get('status') == 'pending':
+                    self.obj.status = 'pending'
+
             if not self.obj.status == 'pending':
                 # if article is pending then skip setting default `status`
                 self.obj.status = 'draft'
