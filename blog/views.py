@@ -2,6 +2,7 @@ from django.conf import settings
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.shortcuts import get_object_or_404
+from django.http import Http404
 
 from .models import Article
 from account.models import User
@@ -14,8 +15,11 @@ class ArticleListView(ListView):
 
 class ArticleDetailView(DetailView):
 
-    def get_object(self, queryset=None):
-        return get_object_or_404(Article.objects.published(), slug=self.kwargs.get('slug'))
+    def get_object(self):
+        article = get_object_or_404(Article.objects.all(), slug=self.kwargs.get('slug'))
+        if self.request.user == article.author or self.request.user.is_superuser or article.status == 'published':
+            return article
+        raise Http404
 
 
 class AuthorProfileView(ListView):
