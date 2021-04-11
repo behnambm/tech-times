@@ -15,11 +15,11 @@
                 <a class="d-block text-white">
                     {% if user.get_full_name %}
                         {{ user.get_full_name }}
-                        {% if user.is_superuser %}
-                            <i class="fa fa-star" style="color: #ffd43b;"></i>
-                        {% endif %}
                     {% else %}
                         {{ user.username }}
+                    {% endif %}
+                    {% if user.is_superuser %}
+                        <i class="fa fa-star" style="color: #ffd43b;"></i>
                     {% endif %}
                 </a>
             </div>
