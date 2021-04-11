@@ -15,9 +15,11 @@
 
 
 {% block subtitle %}
-    <br>
-    {{ author.articles.published.count|to_fa_numbers }}
-    مقاله نوشته است.
+    <span>
+        <br>
+        {{ author.articles.published.count|to_fa_numbers }}
+        مقاله نوشته است.
+    </span>
 {% endblock %}
 
 {% block header-img-link %}{% static 'blog/img/home-bg.jpg' %}{% endblock %}

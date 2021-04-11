@@ -89,7 +89,7 @@ a, p {
     font-size: 0.85rem; 
 }
 
-div.site-heading span.subheading {
+div.site-heading span.subheading span{
     background-color: #151515d6;
     padding: 5px;
     border-radius: 3px;
