@@ -5,6 +5,14 @@
 {% block tabtitle %}پروفایل کاربری{% endblock %}
 
 {% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{message.tags}} fvazir" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
     <form method="post" class="row" id="profile-form">
         {% csrf_token %}
         <div class="col-6">{{ form.username|as_crispy_field }}</div>

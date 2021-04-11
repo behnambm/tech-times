@@ -13,6 +13,7 @@ from django.shortcuts import redirect, render, reverse, get_object_or_404
 from django.conf import settings
 from django.urls import reverse_lazy
 from django.db.models import Q 
+from django.contrib import messages
 
 from .forms import AccountAuthenticationForm, UserRegistrationForm
 from blog.models import Article
@@ -130,9 +131,15 @@ class ProfileView(LoginRequiredMixin, UpdateView):
         if self.request.user.is_superuser:
             # some more information about user, when superuser wants to check their profile
             self.fields += ('is_author', 'is_active', 'last_login')
-            
-            if self.kwargs.get('username'):
-                return get_object_or_404(User, username=self.kwargs.get('username'))
+
+            username_to_edit = self.kwargs.get('username')
+            if  username_to_edit and username_to_edit != self.request.user.username:
+                # to make sure that the user who is being edited is not the logged-in user
+                user_tor_edit = get_object_or_404(User, username=self.kwargs.get('username'))
+                
+                if not user_tor_edit.is_superuser:
+                    return user_tor_edit
+                messages.warning(self.request, 'شما اجازه ویرایش اطلاعات مدیران سایت را ندارید.')
 
         return User.objects.get(pk=self.request.user.pk)
 
