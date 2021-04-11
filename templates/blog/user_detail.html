@@ -67,7 +67,7 @@
         <img src="{% gravatar_url author.email 90 %}" alt="" id="author-gravatar-img">
         <small>درباره نویسنده</small>
         <span id="author-bio-text">
-        {{ author.bio}}
+        {{ author.bio|none_to:'-'}}
     </span>
     </div>
 {% endblock %}

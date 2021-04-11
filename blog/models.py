@@ -15,7 +15,10 @@ class Article(models.Model):
     objects = ArticleManager()
 
     class Meta:
+        verbose_name = 'مقاله'
+        verbose_name_plural = 'مقالات'
         ordering = ('-publish', )
+
     CHOICES = (
         ('published', 'منتشر شده'),
         ('draft', 'پیش نویس'),

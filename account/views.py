@@ -33,16 +33,19 @@ class AccountView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         if self.request.GET.get('q'):
+            # 'q' parameter exists in GET query when user searches something
             q = self.request.GET.get('q')
             return Article.objects.filter(Q(title__icontains=q) | Q(content__icontains=q))
 
         if self.request.user.is_superuser:
             return Article.objects.order_by('-created')[:10]
+
         return Article.objects.filter(author=self.request.user).order_by('-created')[:10]
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
+        # add searched string to template context
         if self.request.GET.get('q'):
             context['q'] = self.request.GET.get('q')
         
@@ -84,6 +87,10 @@ def check_email(request):
 
 
 def activate(request, uid, token):
+    """
+    Activate user by checking information in activation link that has been sent 
+    to the user's email
+    """
     user_id = force_text(urlsafe_base64_decode(uid))
     try:
         user = User.objects.get(pk=user_id)
@@ -110,6 +117,10 @@ class UpdateArticleView(AuthorAccessMixin, AuthorDefaultFormMixin, UpdateAccessM
 
 
 class ProfileView(LoginRequiredMixin, UpdateView):
+    """
+    Show some basic information about users
+    If logged-in user is superuser they can change other users information as well
+    """
     template_name = 'account/profile.html'
     fields = ('username', 'first_name', 'last_name', 'email', 'bio')
     success_url = reverse_lazy('account:home')
@@ -117,6 +128,7 @@ class ProfileView(LoginRequiredMixin, UpdateView):
 
     def get_object(self):
         if self.request.user.is_superuser:
+            # some more information about user, when superuser wants to check their profile
             self.fields += ('is_author', 'is_active', 'last_login')
             
             if self.kwargs.get('username'):
@@ -126,14 +138,20 @@ class ProfileView(LoginRequiredMixin, UpdateView):
 
 
 class ArticleListView(ListView):
+    """
+    Get paginated list of all articles from logged-in user
+    """
     template_name = 'account/articles_list.html'
     paginate_by = 10
 
     def get_queryset(self):
         if self.request.user.is_superuser:
+            # If logged-in user is superuser show paginated list of all articles
             return Article.objects.all()
+
         elif self.request.user.is_author:
             return Article.objects.filter(author=self.request.user)
+
         raise Http404
 
 

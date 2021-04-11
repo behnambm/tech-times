@@ -2,7 +2,16 @@
     DJANGO Admin styles
 */
 
-@import url(fonts.css);
+@font-face {
+    font-family: 'Vazir';
+    src: url('fonts/Vazir-Regular.eot');
+    src: url('fonts/Vazir-Regular.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Vazir-Regular.woff2') format('woff2'),
+         url('fonts/Vazir-Regular.woff') format('woff'),
+         url('fonts/Vazir-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-display:swap;
+}
 
 /* VARIABLE DEFINITIONS */
 :root {
@@ -231,7 +240,7 @@ blockquote {
 }
 
 code, pre {
-    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+    font-family: Vazir;
     color: var(--body-quiet-color);
     font-size: 12px;
     overflow-x: auto;
@@ -476,7 +485,7 @@ input, textarea, select, .form-row p, form .button {
     margin: 2px 0;
     padding: 2px 3px;
     vertical-align: middle;
-    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+    font-family: Vazir;
     font-weight: normal;
     font-size: 13px;
 }

@@ -5,6 +5,11 @@ from blog.models import Article
 
 
 class AuthorAccessMixin:
+    """
+    Handle users that are not authenticated
+    Handle users that are not `author`
+    Manage form fields based on user roles
+    """
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
             raise Http404
@@ -41,9 +46,13 @@ class AuthorDefaultFormMixin:
 
 
 class UpdateAccessMixin:
+    """
+    Handle accessing to /update/ view to update an article
+    """
     def dispatch(self, request, pk, *args, **kwargs):
         article = get_object_or_404(Article, pk=pk)
         if request.user.is_superuser or (article.status in ['draft', 'rejected'] and article.author == request.user):
             return super().dispatch(request, pk, *args, **kwargs)
+
         raise Http404
 

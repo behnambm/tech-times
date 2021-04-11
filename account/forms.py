@@ -7,27 +7,13 @@ from .models import User
 
 
 class AccountAuthenticationForm(AuthenticationForm):
-    username = UsernameField(
-        required=False,
-        widget=forms.TextInput(
-            attrs={
-                'autofocus': True,
-                'placeholder': 'نام کاربری',
-            }
-        )
-    )
-
-    password = forms.CharField(
-        label=_("Password"),
-        strip=False,
-        required=False,
-        widget=forms.PasswordInput(
-            attrs={
-                'autocomplete': 'current-password',
-                'placeholder': 'رمزعبور',
-            }
-        ),
-    )
+    """
+    Just to change some attributes of form 
+    """
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update({'placeholder': 'نام کاربری'})
+        self.fields['password'].widget.attrs.update({'placeholder': 'رمزعبور'})
 
 
 class UserRegistrationForm(UserCreationForm):
