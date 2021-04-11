@@ -173,11 +173,16 @@ CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Custom',
         'toolbar_Custom': [
+            ['Styles', 'Format', 'Font', 'FontSize'],
             ['Bold', 'Italic', 'Underline'],
-            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyRight', 
+                'JustifyCenter', 'JustifyLeft', 'JustifyBlock', 'BidiRtl', 'BidiLtr'],
+            '/',
             ['Link', 'Unlink', 'Image'],
             ['RemoveFormat', 'Source'],
             ['TextColor', 'BGColor', '-'],
+            ['RemoveFormat', 'Blockquote', '-',],
+            ['HorizontalRule','Maximize', 'ShowBlocks'],
         ]
     }
 }
