@@ -192,3 +192,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # other configs
 PAGINATE_COUNT = 5
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
