@@ -9,7 +9,7 @@ from account.models import User
 
 
 class ArticleListView(ListView):
-    queryset = Article.objects.published()
+    queryset = Article.objects.published().select_related('author')
     paginate_by = settings.PAGINATE_COUNT
 
 

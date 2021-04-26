@@ -39,7 +39,7 @@ class AccountView(LoginRequiredMixin, ListView):
             return Article.objects.filter(Q(title__icontains=q) | Q(content__icontains=q))
 
         if self.request.user.is_superuser:
-            return Article.objects.order_by('-created')[:10]
+            return Article.objects.order_by('-created').select_related('author')[:10]
 
         return Article.objects.filter(author=self.request.user).order_by('-created')[:10]
 
@@ -154,7 +154,7 @@ class ArticleListView(ListView):
     def get_queryset(self):
         if self.request.user.is_superuser:
             # If logged-in user is superuser show paginated list of all articles
-            return Article.objects.all()
+            return Article.objects.all().select_related('author')
 
         elif self.request.user.is_author:
             return Article.objects.filter(author=self.request.user)
