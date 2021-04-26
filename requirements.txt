@@ -6,6 +6,7 @@ cryptography==3.4.6
 Django==3.2
 django-ckeditor==6.0.0
 django-crispy-forms==1.11.2
+django-debug-toolbar==3.2.1
 django-gravatar2==1.4.4
 django-js-asset==1.2.2
 django-widget-tweaks==1.4.8
