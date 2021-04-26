@@ -12,6 +12,7 @@ from .views import (
     ProfileView,
     ArticleListView,
     AccountPasswordChangeView,
+    ArticleDeleteView,
 )
 
 app_name = 'account'
@@ -19,6 +20,7 @@ urlpatterns = [
     path('', AccountView.as_view(), name='home'),
     path('create/', CreateArticleView.as_view(), name='create'),
     path('update/<pk>/', UpdateArticleView.as_view(), name='update'),
+    path('delete/<int:pk>/', ArticleDeleteView.as_view(), name='delete'),
     path('profile/', ProfileView.as_view(), name='profile'),
     path('profile/<username>/', ProfileView.as_view(), name='profile'),
     path('list/', ArticleListView.as_view(), name='list'),

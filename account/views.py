@@ -1,6 +1,6 @@
 from django.contrib.auth import views, login
 from django.views.generic.list import ListView
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
@@ -164,3 +164,29 @@ class ArticleListView(ListView):
 
 class AccountPasswordChangeView(views.PasswordChangeView):
     success_url = reverse_lazy('account:password_change_done')
+
+
+class ArticleDeleteView(DeleteView):
+    model = Article
+    template_name = 'account/article_delete.html'
+    success_url = reverse_lazy('account:home')
+
+    def dispatch(self, request, pk, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect(reverse('account:login'))
+        
+        article = get_object_or_404(Article, pk=pk)
+
+        if request.user == article.author: # user wants to delete the article that owns
+            return super().dispatch(request, pk, *args, **kwargs)
+        
+        # super user wants to delete someone else's article
+        if request.user.is_superuser:
+            if article.author.is_superuser:
+                messages.warning(request, 'شما نمی توانید مقاله مدیران دیگر را حذف کنید.')
+                return redirect(reverse('account:home'))
+            else:
+                return super().dispatch(request, pk, *args, **kwargs)
+
+        messages.error(request, 'شما اجازه حذف مقاله کاربران دیگر را ندارید.', 'danger')
+        return redirect(reverse('account:home'))

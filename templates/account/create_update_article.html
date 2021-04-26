@@ -16,6 +16,9 @@
         {% if user.is_superuser %}
             <div class="col-3">{{ form.author|add_class:'fvazir'|as_crispy_field }}</div>
             <div class="col-3">{{ form.status|add_class:'fvazir'|as_crispy_field }}</div>
+            <div class="col-3" style="padding: 30px; padding-bottom: 0;">
+                <a href="{% url 'account:delete' request.resolver_match.kwargs.pk %}" class="btn btn-danger">حذف مقاله</a>
+            </div>
         {% elif user.is_author %}
             <div class="col-3">
                 <div id="div_id_status" class="form-group">

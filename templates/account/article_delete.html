@@ -1,0 +1,26 @@
+{% extends 'account/base.html' %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+
+{% block tabtitle %}ایجاد مقاله{% endblock %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data" class="row" id="create-article-form">
+        {% csrf_token %}
+        <div class="col-8 offset-2 bg-gray p-2 rounded fvazir">
+            آیا مطمئن هستید که میخواهید مقاله 
+            "{{ article.title }}" 
+             را حذف کنید؟
+        </div>
+        <div class="col-12"></div>
+        
+        <div class="col-4 offset-4">
+            <button type="submit" class="my-4 btn btn-danger fvazir" style="width: 48%; display: block im !important;">
+                حذف
+            </button>
+            <a href="{% url 'account:update' request.resolver_match.kwargs.pk %}" type="submit" class="btn bg-gray fvazir" style="width: 48%; display: block im !important;">
+                انصراف
+            </a>
+        </div>
+    </form>
+{% endblock %}
