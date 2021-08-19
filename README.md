@@ -37,3 +37,17 @@ and finally go to: http://127.0.0.1:8000
 - Database: MySql
 - SMTP provider: Google Mail
 </details> 
+
+<details>
+<summary>Screenshots</summary>
+
+  
+  ![*_019](https://user-images.githubusercontent.com/26994700/130070302-425ede5b-e586-4be1-b773-6eff25679a21.png)
+  ---
+![*_020](https://user-images.githubusercontent.com/26994700/130070335-7b2a0a1c-00de-47f5-9597-dcf8e2dd193e.png)
+  ---
+![*_022](https://user-images.githubusercontent.com/26994700/130070378-d5809647-123a-4f97-bf21-6b36a26530d0.png)
+  ---
+![*_024](https://user-images.githubusercontent.com/26994700/130070404-d2418897-034a-4604-8818-36afaa3be29a.png)
+
+</details> 
